@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+DEB_UPSTREAM_VERSION := $(shell echo $(DEB_VERSION) | sed 's/-[^-]*//')
+# strip of a optionally added cvs patch (format: upstream+cvs-debian)
+DEB_UPSTREAM_TARBALL_VERSION := $(shell echo $(DEB_UPSTREAM_VERSION) | sed 's/+[^+]*//')
+DEB_TAR_SRCDIR := libffi-ruby-$(DEB_UPSTREAM_TARBALL_VERSION)
+
+build_directory=$(shell pwd)
+
+include /usr/share/cdbs/1/rules/tarball.mk
+
+# tarball.mk and ruby-setup-rb.mk are not friend for the moment
+# include /usr/share/ruby-pkg-tools/1/class/ruby-setup-rb.mk
+
+configure/libffi-ruby1.8::
+	cp /usr/lib/ruby/1.8/setup.rb $(DEB_BUILDDIR)	
+	cd $(DEB_BUILDDIR) && /usr/bin/ruby1.8 setup.rb config --installdirs=std
+
+build/libffi-ruby1.8::
+	cd $(DEB_BUILDDIR) && /usr/bin/ruby1.8 setup.rb setup
+
+install/libffi-ruby1.8::
+	cd $(DEB_BUILDDIR) && /usr/bin/ruby1.8 setup.rb install --prefix=$(build_directory)/debian/libffi-ruby1.8
+

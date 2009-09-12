@@ -1,0 +1,5 @@
+libffi-ruby (0.5.0+git200909101708-1) unstable; urgency=low
+
+  * Initial release
+
+ -- Alban Peignier <alban.peignier@free.fr>  Thu, 10 Sep 2009 17:08:26 +0200

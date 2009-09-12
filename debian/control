@@ -1,0 +1,25 @@
+Source: libffi-ruby
+Section: ruby
+Priority: optional
+Maintainer: Alban Peignier <alban.peignier@free.fr>
+Uploaders: Wayne Meissner <wmeissner@gmail.com>
+Build-Depends: debhelper, cdbs, ruby-pkg-tools, ruby1.8-dev, libffi-dev, libsetup-ruby1.8
+Build-Depends-Indep: ruby1.8
+Standards-Version: 3.8.1
+Homepage: http://kenai.com/projects/ruby-ffi
+
+Package: libffi-ruby1.8
+Architecture: any
+Depends: ${shlibs:Depends}, ruby1.8, libruby1.8
+Description: ruby extension to use Foreign Function Interface library
+  Ruby extension for programmatically loading dynamic 
+  libraries, binding functions within them, and calling         
+  those functions from Ruby code.
+
+Package: libffi-ruby
+Architecture: all
+Depends: ${misc:Depends}, libffi-ruby1.8
+Description: ruby extension to use Foreign Function Interface library
+  Ruby extension for programmatically loading dynamic 
+  libraries, binding functions within them, and calling         
+  those functions from Ruby code.
