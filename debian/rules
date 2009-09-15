@@ -16,6 +16,7 @@ include /usr/share/cdbs/1/rules/tarball.mk
 
 configure/libffi-ruby1.8::
 	cp /usr/lib/ruby/1.8/setup.rb $(DEB_BUILDDIR)	
+	cp debian/post-install.rb $(DEB_BUILDDIR)	
 	cd $(DEB_BUILDDIR) && /usr/bin/ruby1.8 setup.rb config --installdirs=std
 
 build/libffi-ruby1.8::
